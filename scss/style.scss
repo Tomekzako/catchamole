@@ -1,0 +1,337 @@
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-size: 10px;
+        background-color: rgb(51, 255, 51);
+        font-family: 'Indie Flower', cursive;
+    }
+    
+    nav {
+        display: inline-flex;
+        width: 1000px;
+        .lvl {
+            float: left;
+            width: 40%;
+            text-transform: uppercase;
+            font-size: 4rem;
+        }
+        .right {
+            @extend .lvl;
+            float: right;
+            cursor: pointer;
+        }
+    }
+    
+    .back {
+        padding-top: 40px;
+        font-size: 2rem;
+        color: white;
+        align-self: center;
+        text-align: center;
+        font-family: 'Press Start 2P', cursive;
+        cursor: url("../images/cursor.png"), auto;
+        &:hover {
+            color: rgba(255, 255, 255, 0.3);
+        }
+    }
+    
+    .intro {
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+        background-color: rgb(51, 255, 51);
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            position: absolute;
+            top: 0;
+            height: 300px;
+            animation: swing 0.7s infinite;
+        }
+        @keyframes swing {
+            15% {
+                -webkit-transform: translateY(5px);
+                transform: translateY(5x);
+            }
+            30% {
+                -webkit-transform: translateY(-5px);
+                transform: translateY(-5px);
+            }
+            50% {
+                -webkit-transform: translateY(3px);
+                transform: translateY(3px);
+            }
+            65% {
+                -webkit-transform: translateY(-3px);
+                transform: translateY(-3px);
+            }
+            80% {
+                -webkit-transform: translateY(2px);
+                transform: translateY(2px);
+            }
+            100% {
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+            }
+        }
+        h1 {
+            font-size: 6rem;
+        }
+        div {
+            position: absolute;
+            bottom: 0;
+        }
+    }
+    
+    .introUp {
+        height: 0;
+        animation: introUp 2s;
+    }
+    
+    @keyframes introUp {
+        0% {
+            height: 100vh;
+        }
+        100% {
+            height: 0;
+        }
+    }
+    
+    .introList {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        li {
+            cursor: url("../images/cursor.png"), auto;
+            display: inline-block;
+            text-align: center;
+            padding: 20px;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            text-decoration: none;
+            font-size: 3rem;
+            &:hover {
+                color: rgba(255, 255, 255, 0.3);
+            }
+        }
+    }
+    
+    #zoom {
+        transform-origin: 50%;
+        font-size: 2rem;
+        padding-top: 40px;
+        text-align: center;
+        color: rgb(255, 255, 255);
+        font-family: 'Press Start 2P', cursive;
+        span {
+            animation: zoom1-2 infinite 1s;
+            font-size: 2.5rem;
+            cursor: pointer;
+        }
+    }
+    
+    @keyframes zoom1-2 {
+        50% {
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+            color: rgba(255, 255, 255, 0.3);
+        }
+    }
+    
+    h1 {
+        text-align: center;
+        font-size: 2rem;
+        padding-top: 25px;
+        color: rgb(255, 255, 255);
+        @media (min-width: 500px) {
+            padding-top: 20px;
+        }
+    }
+    
+    .scoreBoard {
+        background-color: rgba(255, 255, 255, 0.3);
+        padding: 0 20px;
+        width: 100px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 5rem;
+    }
+    
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        width: 100%;
+    }
+    
+    .wholeMoles {
+        margin-top: 35px;
+    }
+    
+    .moleHill {
+        position: relative;
+        float: left;
+        width: 50%;
+        margin-bottom: 50px;
+        height: 120px;
+        background-image: url(../images/Mole_Hill.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        @media (min-width: 600px) {
+            width: 32%;
+            margin: 70px 5px 0 5px;
+            height: 150px;
+        }
+    }
+    
+    .mole {
+        background: url(../images/css.png);
+        background-repeat: no-repeat;
+        position: absolute;
+        background-size: 80%;
+        height: 80px;
+        width: 100%;
+        left: 25%;
+        z-index: -10;
+        transition: all 0.5s;
+        bottom: 45px;
+    }
+    
+    .moleHill.up .mole {
+        height: 170px;
+    }
+    
+    .fullScreen {
+        font-family: 'Press Start 2P', cursive;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        background-position: center;
+        background-size: auto 100%;
+        background-color: black;
+        .next {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.3rem;
+            background-color: initial;
+            color: white;
+            padding: 10px 30px;
+            float: right;
+            margin-top: 175px;
+            border: none;
+            cursor: pointer;
+            &:hover {
+                color: rgba(255, 255, 255, 0.3);
+            }
+        }
+        .noNext {
+            @extend .next;
+            color: rgba(255, 255, 255, 0.3);
+        }
+        .prev {
+            @extend .next;
+            float: left;
+        }
+        p {
+            font-size: 2rem;
+            color: white;
+            position: absolute;
+            bottom: 60px;
+            left: 30px;
+            &:hover {
+                color: rgba(255, 255, 255, 0.3);
+            }
+        }
+        .scoreResult {
+            font-family: 'Press Start 2P', cursive;
+            text-align: left;
+            width: 100%;
+            font-size: 1.5rem;
+            margin-left: 10px;
+            padding-top: 15px;
+            color: white;
+        }
+        .alertNote {
+            @extend .scoreResult;
+            color: red;
+        }
+        .proceedNote {
+            @extend .scoreResult;
+            color: limegreen;
+        }
+    }
+    
+    .fullCount {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        background: rgba(255, 255, 255, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        h1 {
+            color: black;
+            font-size: 40rem;
+            font-family: 'Press Start 2P', cursive;
+        }
+    }
+    
+    .formBase {
+        padding: 20px;
+        label {
+            font-size: 1rem;
+            color: white;
+        }
+    }
+    
+    .main {
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+        background-color: #33ff33;
+    }
+    
+    .best {
+        display: none;
+        font-size: 4rem;
+    }
+    
+    table {
+        font-size: 1rem;
+        border: 1px solid black;
+        display: none;
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 550px;
+        margin: auto;
+        .thead {
+            font-family: 'Press Start 2P', cursive;
+        }
+        td,
+        th {
+            border: 1px solid black;
+            height: 100%;
+        }
+        th {
+            background: #DFDFDF;
+            font-weight: bold;
+        }
+        td {
+            background: #FAFAFA;
+            text-align: center;
+        }
+        tr:first-child td {
+            background: #F1F1F1;
+            padding: 15px;
+        }
+    }

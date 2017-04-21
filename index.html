@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catch-A-Mole</title>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="intro">
+        <img src="images/css.png">
+        <h1>Catch-A-Mole!!!</h1>
+        <div>
+            <ul class="introList">
+                <li class="firstBtn">Start game</li>
+                <li>Instruction</li>
+                <li>About</li>
+                <li class="allResults">Best results</li>
+            </ul>
+        </div>
+    </div>
+    <h1 class="best">Best results</h1>
+    <table id="scoreTable">
+        <tr class='thead'>
+            <td>Name</td>
+            <td>Result</td>
+        </tr>
+    </table>
+    <div class="container">
+        <nav>
+            <h1 class="lvl"></h1>
+            <h1 class="scoreBoard">0</h1>
+            <h1 class="right">Menu</h1>
+        </nav>
+        <p id='zoom'> Click <span>START</span> to begin !!!</p>
+        <div class="wholeMoles">
+            <div class='moleHill'>
+                <div class="mole"></div>
+            </div>
+            <div class='moleHill'>
+                <div class="mole"></div>
+            </div>
+            <div class='moleHill'>
+                <div class="mole"></div>
+            </div>
+            <div class='moleHill'>
+                <div class="mole"></div>
+            </div>
+            <div class='moleHill'>
+                <div class="mole"></div>
+            </div>
+            <div class='moleHill'>
+                <div class="mole"></div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase-database.js"></script>
+
+</html>
