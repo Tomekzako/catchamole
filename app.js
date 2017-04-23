@@ -173,6 +173,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 time = randomInt(200, 250);
                 console.log(time);
                 break;
+
+            case 10:
+
+                time = randomInt(150, 200);
+                console.log(time);
+                break;
+
+            case 11:
+
+                time = randomInt(50, 100);
+                console.log(time);
+                break;
         }
 
         const hole = moleHill[randomHole()];
@@ -245,14 +257,36 @@ document.addEventListener('DOMContentLoaded', function () {
         newDiv.classList.add('fullScreen');
         newDiv.innerHTML = '<h2 class="scoreResult">Your score = ' + score + '</h2>';
 
-        if (score >= minScore && levelScore > 1) {
+        if (score >= minScore && levelScore > 1 && level <= 10) {
             newDiv.style.backgroundImage = "url(images/maxresdefault.jpg)";
             newDiv.style.backgroundRepeat += ('no-repeat');
             newDiv.innerHTML += '<h2 class="proceedNote">GREAT JOB!!! You can challenge next level</h2>';
             newDiv.innerHTML += '<button class="next">Next Level</button><button class="prev">Try again</button><p class="return">Main menu</p>';
-        } else if (score < minScore) {
+        } else if (score < minScore && level <= 10) {
             newDiv.style.backgroundImage = "url(images/Don-t-Give-Up.jpg)";
             newDiv.innerHTML += '<h2 class="alertNote">You need at least ' + minScore + ' points to proceed to the next level</h2><div class="formBase"><label>Name:</label></br><input type="text" id="name" name="name" placeholder="Type your name:"><button id="subme">Submit</button></div>';
+            newDiv.innerHTML += '<span class="noNext">Next Level</span><button class="prev">Try again</button><p class="return">Main menu</p>';
+            const formBase = newDiv.querySelector('.formBase');
+            console.log(formBase);
+            const submit = formBase.querySelector('#subme');
+            const input = formBase.querySelector('input');
+            console.log(submit);
+
+            submit.addEventListener('click', function () {
+
+                const inputVal = input.value;
+                input.value = '';
+                var results = app.database().ref('Results');
+                var bestResults = results.push({
+                    name: inputVal,
+                    score: score
+                });
+                console.log(bestResults.key);
+            });
+        } else if (score >= minScore && levelScore > 1 && level > 10) {
+            newDiv.style.backgroundImage = "url(images/maxresdefault.jpg)";
+            newDiv.style.backgroundRepeat += ('no-repeat');
+            newDiv.innerHTML += '<h2 class="proceedNote">CONGRATULATIONS!!! You finished a game with ' + score + ' points</h2><div class="formBase"><label>Name:</label></br><input type="text" id="name" name="name" placeholder="Type your name:"><button id="subme">Submit</button></div>';
             newDiv.innerHTML += '<span class="noNext">Next Level</span><button class="prev">Try again</button><p class="return">Main menu</p>';
             const formBase = newDiv.querySelector('.formBase');
             console.log(formBase);
@@ -294,6 +328,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.log(bestResults.key);
             });
         }
+
         body.appendChild(newDiv);
         const menu = newDiv.querySelector('p');
         menu.addEventListener('click', function () {
